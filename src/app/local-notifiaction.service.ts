@@ -9,15 +9,17 @@ export class LocalNotifiactionService {
   constructor() { }
 
   async showLocalNotification(id: number, title: string, text: string, h: any, m:any){
+    this
     await LocalNotifications.schedule({
       notifications: [
         {
           title: title,
           body: text,
           id: id,
-          schedule: {
-            on: {hour:h, minute:m},
-            allowWhileIdle: true,
+          autoCancel: true,
+          schedule: { every: 'minute'
+            // on: {hour:h, minute:m},
+            // allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
           }
@@ -25,7 +27,9 @@ export class LocalNotifiactionService {
         }
       ]
     })
-  }  async showLocalNotificationNow(id: number, title: string, text: string, time: any){
+    console.log("Notificacion enviada para (h:"+h+" ,m:"+m+")")
+  }  
+  async showLocalNotificationNow(id: number, title: string, text: string, time: any){
     await LocalNotifications.schedule({
       notifications: [
         {

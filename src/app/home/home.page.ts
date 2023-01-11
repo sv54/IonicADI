@@ -57,6 +57,7 @@ export class HomePage {
     }
 
     async sendLocalNotificationNow() {
+        console.log("Enviando notificacion")
       const randomId = Math.floor(Math.random() * 10000) + 1;
       this.body = "It's time to drink some water! 8 glasses of water is the goal!"
       await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body, this.h, Date.now() + 1000)
