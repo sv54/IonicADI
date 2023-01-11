@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,17 +9,23 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Home</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <ion-img src='../../assets/35834924.jpg'></ion-img>
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-img src='../../assets/35834924.jpg' slot="start"></ion-img>
     <p>{{today | date: 'dd/MM/yyyy HH:mm'}}</p>
-    <p>{{formattedString}}</p>
+    <p>{{formattedDateTime}}</p>
     <ion-button (click)="sendLocalNotification()">Send Local Notification</ion-button>
+    <ion-button (click)="addOne()">Add One</ion-button>
+    <ion-button (click)="showData()">Show Data</ion-button>
+    <ion-button (click)="removeData()">Delete today</ion-button>
+    <br>
+    <ion-input type="number" placeholder="hora" #h></ion-input>
+    <ion-input type="number" placeholder="minuto" #m></ion-input>
+    <ion-button (click)="save(h,m)">Save</ion-button>
+
   </div>
 
 </ion-content>
