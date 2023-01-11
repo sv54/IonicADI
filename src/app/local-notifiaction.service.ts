@@ -25,6 +25,23 @@ export class LocalNotifiactionService {
         }
       ]
     })
+  }  async showLocalNotificationNow(id: number, title: string, text: string, time: any){
+    await LocalNotifications.schedule({
+      notifications: [
+        {
+          title: title,
+          body: text,
+          id: id,
+          schedule: {
+            at: new Date(),
+            allowWhileIdle: true,
+            //at: new Date(m),
+            // every: 'day'
+          }
+
+        }
+      ]
+    })
   }
   async DefaultNotification(){
     await LocalNotifications.schedule({
@@ -35,7 +52,7 @@ export class LocalNotifiactionService {
           body: "Es importante hidratarse bien despues de dormir",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:9},
+            on: {hour:9, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -47,7 +64,7 @@ export class LocalNotifiactionService {
           body: 'Siempre lleva agua si vas a salir de casa!',
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:11},
+            on: {hour:11, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -59,7 +76,7 @@ export class LocalNotifiactionService {
           body: "Si no te gusta el sabor de agua, puedes añadir un trozo de fruta o exprimir un poco de limon!",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:13},
+            on: {hour:13, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -71,7 +88,7 @@ export class LocalNotifiactionService {
           body: "No te olvides de tomar al menos un vaso de agua! Es bueno para la digestion",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:14},
+            on: {hour:14, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -83,7 +100,7 @@ export class LocalNotifiactionService {
           body: "Sabias que es recomendable tomar 8 vasos de agua al dia!",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:16},
+            on: {hour:16, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -95,7 +112,7 @@ export class LocalNotifiactionService {
           body: "Sabias que es recomendable tomar 8 vasos de agua al dia!",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:18},
+            on: {hour:18, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -107,7 +124,7 @@ export class LocalNotifiactionService {
           body: "No te olvides de llevar un vaso de agua",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:20},
+            on: {hour:20, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -119,7 +136,7 @@ export class LocalNotifiactionService {
           body: "Deja un vaso con agua en la mesita de noche",
           id: Math.floor(Math.random() * 10000) + 1,
           schedule: {
-            on: {hour:22},
+            on: {hour:22, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'

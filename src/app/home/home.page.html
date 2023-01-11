@@ -17,14 +17,15 @@
     <ion-img src='../../assets/35834924.jpg' slot="start"></ion-img>
     <p>{{today | date: 'dd/MM/yyyy HH:mm'}}</p>
     <p>{{formattedDateTime}}</p>
-    <ion-button (click)="sendLocalNotification()">Send Local Notification</ion-button>
+    <p>{{vecesHoy}}</p>
     <ion-button (click)="addOne()">Add One</ion-button>
     <ion-button (click)="showData()">Show Data</ion-button>
     <ion-button (click)="removeData()">Delete today</ion-button>
+    <ion-button (click)="sendLocalNotificationNow()">Send Now</ion-button>
     <br>
-    <ion-input type="number" placeholder="hora" #h></ion-input>
+    <!-- <ion-input type="number" placeholder="hora" #h></ion-input>
     <ion-input type="number" placeholder="minuto" #m></ion-input>
-    <ion-button (click)="save(h,m)">Save</ion-button>
+    <ion-button (click)="save(h,m)">Save</ion-button> -->
 
   </div>
 

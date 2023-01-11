@@ -22,6 +22,7 @@ export class HomePage {
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
         this.setToday();
+        this.sendLocalNotification()
     }
 
 
@@ -50,11 +51,15 @@ export class HomePage {
     }
 
     async sendLocalNotification() {
-        const randomId = Math.floor(Math.random() * 10000) + 1;
-        this.body = "It's time to drink some water! 8 glasses of water is the goal!"
         // await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body, this.h, this.m)
         //     .then(r => { console.log('Notification Sent', r) })
         await this.localNotification.DefaultNotification()
+    }
+
+    async sendLocalNotificationNow() {
+      const randomId = Math.floor(Math.random() * 10000) + 1;
+      this.body = "It's time to drink some water! 8 glasses of water is the goal!"
+      await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body, this.h, Date.now() + 1000)
     }
 
     save(h:any,m:any){
