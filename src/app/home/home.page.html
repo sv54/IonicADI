@@ -14,9 +14,11 @@
   </ion-header>
 
   <div id="container">
+    <ion-img src='../../assets/35834924.jpg'></ion-img>
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
     <p>{{today | date: 'dd/MM/yyyy HH:mm'}}</p>
+    <p>{{formattedString}}</p>
     <ion-button (click)="sendLocalNotification()">Send Local Notification</ion-button>
   </div>
 

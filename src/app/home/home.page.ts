@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalNotifiactionService } from '../local-notifiaction.service';
+import { format, parseISO } from 'date-fns'
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,15 @@ export class HomePage {
   public title: any;
   public body: any;
   public today = Date.now();
+  formattedString = ''
 
-  constructor(private localNotification: LocalNotifiactionService) {}
+  constructor(private localNotification: LocalNotifiactionService) {
+    this.setToday();
+  }
+
+  setToday(){
+    this.formattedString = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'HH:mm,  d/MMM/yy')
+  }
 
   async sendLocalNotification () {
     const randomId = Math.floor(Math.random() * 10000) + 1;
