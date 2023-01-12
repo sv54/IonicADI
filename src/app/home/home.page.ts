@@ -84,8 +84,9 @@ export class HomePage {
 
         const toggle2 = await this.StorageService.getToggle2()
         this.reminderAgua = toggle2
+
         this.loadChart()
-        
+
     }
 
     async loadChart(){
@@ -98,7 +99,7 @@ export class HomePage {
           alignWithLabel: true
         }
       }
-      this.options.series= 
+      this.options.series=
       [
         {
           name: 'Test',
