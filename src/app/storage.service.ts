@@ -57,4 +57,18 @@ export class StorageService {
     return this.storage.set(key, 0)
    }
 
+   async getChartData(){
+    var keys: any[] = []
+    var values: string[]=[]
+    this.storage.forEach((value,key,index)=>{
+      if(key!="toggle" && key!="toggle2"){
+        keys.push(key)
+        values.push(value)
+      }
+    })
+    console.log(keys)
+    console.log(values)
+    return {keys,values}
+  }
+   
 }
