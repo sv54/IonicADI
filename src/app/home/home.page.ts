@@ -27,6 +27,7 @@ export class HomePage {
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
         this.setup();
         if(this.enviarNotif){
+          this.cancelLocalNotification()
           this.sendLocalNotification()
         }
     }
@@ -45,6 +46,9 @@ export class HomePage {
 
         const toggle = await this.StorageService.getToggle()
         this.enviarNotif = toggle
+
+        const toggle2 = await this.StorageService.getToggle2()
+        this.reminderAgua = toggle2
     }
 
     async addOne() {
