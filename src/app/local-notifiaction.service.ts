@@ -56,7 +56,7 @@ export class LocalNotifiactionService {
           body: "Es importante hidratarse bien despues de dormir",
           id: 1,
           schedule: {
-            on: {hour:17, minute: 54},
+            on: {hour:9, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -68,7 +68,7 @@ export class LocalNotifiactionService {
           body: 'Siempre lleva agua si vas a salir de casa!',
           id: 2,
           schedule: {
-            on: {hour:17, minute: 47},
+            on: {hour:11, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -80,7 +80,7 @@ export class LocalNotifiactionService {
           body: "Si no te gusta el sabor de agua, puedes añadir un trozo de fruta o exprimir un poco de limon!",
           id: 3,
           schedule: {
-            on: {hour:17, minute: 48},
+            on: {hour:13, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -92,7 +92,7 @@ export class LocalNotifiactionService {
           body: "No te olvides de tomar al menos un vaso de agua! Es bueno para la digestion",
           id: 4,
           schedule: {
-            on: {hour:17, minute: 49},
+            on: {hour:14, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -104,7 +104,7 @@ export class LocalNotifiactionService {
           body: "Sabias que es recomendable tomar 8 vasos de agua al dia!",
           id: 5,
           schedule: {
-            on: {hour:17, minute: 50},
+            on: {hour:16, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -116,7 +116,7 @@ export class LocalNotifiactionService {
           body: "Sabias que es recomendable tomar 8 vasos de agua al dia!",
           id: 6,
           schedule: {
-            on: {hour:17, minute: 51},
+            on: {hour:18, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -128,7 +128,7 @@ export class LocalNotifiactionService {
           body: "No te olvides de llevar un vaso de agua",
           id: 7,
           schedule: {
-            on: {hour:17, minute: 52},
+            on: {hour:20, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
@@ -140,7 +140,7 @@ export class LocalNotifiactionService {
           body: "Deja un vaso con agua en la mesita de noche",
           id: 8,
           schedule: {
-            on: {hour:17, minute: 53},
+            on: {hour:22, minute: 0},
             allowWhileIdle: true,
             //at: new Date(m),
             // every: 'day'
