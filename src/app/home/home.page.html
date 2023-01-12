@@ -22,8 +22,8 @@
     <ion-button (click)="showData()">Show Data</ion-button>
     <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
     <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->
-
-  </div>
+    <div [options]="options" class="demo-chart" echarts></div>
+    </div>
 
   <ion-item>
     <ion-label class="ion-text-wrap">Enviar notifiacaciones diaras</ion-label>
