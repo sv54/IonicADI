@@ -14,7 +14,11 @@
       <ion-icon slot="icon-only" name="water" ></ion-icon>
     </ion-button>
     <!-- <ion-img src='../../assets/35834924.jpg' slot="start"></ion-img> -->
-    <p>{{texto}}{{vecesHoy}} Vasos</p>
+    <ion-card>
+      <ion-card-content>
+        <b>{{texto}}{{vecesHoy}} Vasos</b>
+      </ion-card-content>
+    </ion-card>
     <ion-button (click)="showData()">Show Data</ion-button>
     <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
     <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->

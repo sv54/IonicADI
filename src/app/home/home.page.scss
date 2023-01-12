@@ -4,7 +4,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
 }
 
@@ -36,3 +36,10 @@ ion-icon {
   font-size: 128px;
 }
 
+ion-card{
+  margin-top: 20%;
+}
+
+ion-card-content{
+  font-size: 22px;
+}
