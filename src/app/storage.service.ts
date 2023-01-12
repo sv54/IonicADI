@@ -41,6 +41,18 @@ export class StorageService {
     return this.storage.set('toggle', item)
    }
 
+   async getToggle2() {
+    const resul = await this.storage.get('toggle2')
+    if(resul == null || resul == undefined) {
+      return true
+    }
+    return resul
+   }
+
+   async setToggle2(item: boolean){
+    return this.storage.set('toggle2', item)
+   }
+
    async removeItem(key: string){
     return this.storage.set(key, 0)
    }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LocalNotifiactionService } from '../local-notifiaction.service';
 import { format, parseISO } from 'date-fns'
 import { StorageService } from '../storage.service'
+import { CancelOptions, LocalNotifications } from '@capacitor/local-notifications';
 
 @Component({
     selector: 'app-home',
@@ -19,12 +20,15 @@ export class HomePage {
     h = 0
     m = 0
     enviarNotif = true;
+    reminderAgua = false;
     texto = ""
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
         this.setup();
-        this.sendLocalNotification()
+        if(this.enviarNotif){
+          this.sendLocalNotification()
+        }
     }
 
 
@@ -74,25 +78,61 @@ export class HomePage {
         await this.localNotification.DefaultNotification()
     }
 
+    async cancelLocalNotification() {
+      let option:CancelOptions={
+        notifications:[
+          {id:1},
+          {id:2},
+          {id:3},
+          {id:4},
+          {id:5},
+          {id:6},
+          {id:7},
+          {id:8}
+        ]
+      }
+      LocalNotifications.cancel(option);
+  }
+
     async toggle(permiso: any){
       if(!permiso.checked){
         await this.StorageService.setToggle(true)
         this.enviarNotif = permiso.checked
-      }
-      else{
+        this.sendLocalNotification()
+      }else{
         await this.StorageService.setToggle(false)
         this.enviarNotif = permiso.checked
-
+        this.cancelLocalNotification()
       }
+    }
 
+    async reminder(permiso2: any){
+      if(!permiso2.checked){
+        await this.StorageService.setToggle2(true)
+        this.reminderAgua = permiso2.checked
+        this.sendLocalNotificationNow()
+      }else{
+        await this.StorageService.setToggle2(false)
+        this.reminderAgua = permiso2.checked
+        this.cancelLocalNotificationNow()
+      }
     }
 
     async sendLocalNotificationNow() {
       console.log("Enviando notificacion")
-      const randomId = Math.floor(Math.random() * 10000) + 1;
+      const randomId = 100 //Math.floor(Math.random() * 10000) + 1;
       this.body = "It's time to drink some water! 8 glasses of water is the goal!"
       await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body, this.h, Date.now() + 1000)
     }
+
+    async cancelLocalNotificationNow() {
+      let option2:CancelOptions={
+        notifications:[
+          {id:100}
+        ]
+      }
+      LocalNotifications.cancel(option2);
+  }
 
     asignarTexto(){
       if(this.vecesHoy == 0){
