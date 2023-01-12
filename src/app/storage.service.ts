@@ -17,8 +17,12 @@ export class StorageService {
     this.storage.create();
    }
 
-   getData(key: string) {
-    return this.storage.get(key) || 0
+   async getData(key: string) {
+    const resul = await this.storage.get(key)
+    if(resul == null || Number.isNaN(resul)) {
+      return 0
+    }
+    return resul
    }
 
    async addData(key: string, item: number){

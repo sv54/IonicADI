@@ -19,6 +19,7 @@ export class HomePage {
     h = 0
     m = 0
     enviarNotif = false;
+    texto = ""
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
@@ -30,6 +31,7 @@ export class HomePage {
       this.enviarNotif = permiso.checked
       console.log(this.enviarNotif)
     }
+
     async setToday() {
         this.formattedDateTime = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'HH:mm,  dd/MM/yy')
         this.day = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'dd/MM/yy')
@@ -56,6 +58,7 @@ export class HomePage {
 
     async showData() {
         console.log(await this.StorageService.getData(this.day))
+        console.log(typeof await this.StorageService.getData(this.day))
     }
 
     async sendLocalNotification() {
