@@ -6,27 +6,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Home</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-img src='../../assets/35834924.jpg' slot="start"></ion-img>
-    <p>{{today | date: 'dd/MM/yyyy HH:mm'}}</p>
-    <p>{{formattedDateTime}}</p>
+  <div id="container-fluid">
+    <ion-button class="BigButton" shape="circle" color="success" size="large" (click)="addOne()">
+      <ion-icon slot="icon-only" name="water" ></ion-icon>
+    </ion-button>
+    <!-- <ion-img src='../../assets/35834924.jpg' slot="start"></ion-img> -->
     <p>{{vecesHoy}}</p>
-    <ion-button (click)="addOne()">Add One</ion-button>
-    <ion-button (click)="showData()">Show Data</ion-button>
-    <ion-button (click)="removeData()">Delete today</ion-button>
-    <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button>
-    <br>
-    <!-- <ion-input type="number" placeholder="hora" #h></ion-input>
-    <ion-input type="number" placeholder="minuto" #m></ion-input>
-    <ion-button (click)="save(h,m)">Save</ion-button> -->
-
+    <!-- <ion-button (click)="showData()">Show Data</ion-button> -->
+    <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
+    <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->
+    <ion-item>
+      <ion-label class="ion-text-wrap">Enviar notifiacaciones por defecto </ion-label>
+      <ion-toggle color="success" (click)="toggle(permiso)" #permiso></ion-toggle>
+    </ion-item>
   </div>
 
 </ion-content>
+<ion-footer>
+  <ion-fab horizontal="end" vertical="bottom">
+    <ion-fab-button color="danger" size="small" (click)="minusOne()">
+      <ion-icon name="remove-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

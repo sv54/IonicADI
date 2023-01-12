@@ -18,6 +18,7 @@ export class HomePage {
     vecesHoy: number = 0;
     h = 0
     m = 0
+    enviarNotif = false;
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
@@ -25,7 +26,10 @@ export class HomePage {
         this.sendLocalNotification()
     }
 
-
+    async toggle(permiso: any){
+      this.enviarNotif = permiso.checked
+      console.log(this.enviarNotif)
+    }
     async setToday() {
         this.formattedDateTime = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'HH:mm,  dd/MM/yy')
         this.day = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'dd/MM/yy')
@@ -34,8 +38,15 @@ export class HomePage {
     }
 
     async addOne() {
+        console.log(this.enviarNotif)
         this.vecesHoy = this.vecesHoy + 1
         await this.StorageService.addData(this.day, this.vecesHoy)
+    }
+    async minusOne(){
+      if(this.vecesHoy > 0){
+        this.vecesHoy = this.vecesHoy - 1
+        await this.StorageService.addData(this.day, this.vecesHoy)
+      }
     }
 
     async removeData() {
@@ -45,9 +56,6 @@ export class HomePage {
 
     async showData() {
         console.log(await this.StorageService.getData(this.day))
-        console.log(this.h, this.m)
-        console.log(typeof this.h)
-        console.log(this.localNotification.getPending())
     }
 
     async sendLocalNotification() {
