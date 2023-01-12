@@ -18,23 +18,29 @@ export class HomePage {
     vecesHoy: number = 0;
     h = 0
     m = 0
-    enviarNotif = false;
+    enviarNotif = true;
     texto = ""
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
-        this.setToday();
+        this.setup();
         this.sendLocalNotification()
     }
 
 
 
-    async setToday() {
+    async setup() {
+
         this.formattedDateTime = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'HH:mm,  dd/MM/yy')
         this.day = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'dd/MM/yy')
+
         this.vecesHoy = parseInt(await this.StorageService.getData(this.day))
         console.log(this.vecesHoy)
+
         this.asignarTexto()
+
+        const toggle = await this.StorageService.getToggle()
+        this.enviarNotif = toggle
     }
 
     async addOne() {
@@ -59,6 +65,7 @@ export class HomePage {
     async showData() {
         console.log(await this.StorageService.getData(this.day))
         console.log(typeof await this.StorageService.getData(this.day))
+        console.log(this.enviarNotif)
     }
 
     async sendLocalNotification() {
@@ -68,8 +75,16 @@ export class HomePage {
     }
 
     async toggle(permiso: any){
-      this.enviarNotif = permiso.checked
-      console.log(this.enviarNotif)
+      if(!permiso.checked){
+        await this.StorageService.setToggle(true)
+        this.enviarNotif = permiso.checked
+      }
+      else{
+        await this.StorageService.setToggle(false)
+        this.enviarNotif = permiso.checked
+
+      }
+
     }
 
     async sendLocalNotificationNow() {

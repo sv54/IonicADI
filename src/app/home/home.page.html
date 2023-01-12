@@ -22,7 +22,7 @@
   </div>
   <ion-item>
     <ion-label class="ion-text-wrap">Enviar notifiacaciones por defecto </ion-label>
-    <ion-toggle color="success" (click)="toggle(permiso)" #permiso></ion-toggle>
+    <ion-toggle color="success" [checked]=enviarNotif (click)="toggle(permiso)" #permiso></ion-toggle>
   </ion-item>
 
 </ion-content>
