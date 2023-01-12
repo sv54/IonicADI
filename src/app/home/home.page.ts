@@ -64,9 +64,8 @@ export class HomePage {
           this.cancelLocalNotification()
           this.sendLocalNotification()
         }
+
     }
-
-
 
     async setup() {
 
@@ -83,6 +82,29 @@ export class HomePage {
 
         const toggle2 = await this.StorageService.getToggle2()
         this.reminderAgua = toggle2
+        this.loadChart()
+        
+    }
+
+    async loadChart(){
+      var {keys,values}= await this.StorageService.getChartData()
+
+      this.options.xAxis = {
+        type: 'category',
+        data: keys,
+        axisTick: {
+          alignWithLabel: true
+        }
+      }
+      this.options.series= 
+      [
+        {
+          name: 'Test',
+          type: 'bar',
+          barWidth: '60%',
+          data: values
+        }
+      ]
     }
 
     async addOne() {
