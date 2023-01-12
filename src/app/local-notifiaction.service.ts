@@ -8,7 +8,7 @@ export class LocalNotifiactionService {
 
   constructor() { }
 
-  async showLocalNotification(id: number, title: string, text: string, h: any, m:any){
+  async showLocalNotification(id: number, title: string, text: string){
     this
     await LocalNotifications.schedule({
       notifications: [
@@ -27,8 +27,7 @@ export class LocalNotifiactionService {
         }
       ]
     })
-    console.log("Notificacion enviada para (h:"+h+" ,m:"+m+")")
-  }  
+  }
   async showLocalNotificationNow(id: number, title: string, text: string, time: any){
     await LocalNotifications.schedule({
       notifications: [
