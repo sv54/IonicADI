@@ -3,13 +3,47 @@ import { LocalNotifiactionService } from '../local-notifiaction.service';
 import { format, parseISO } from 'date-fns'
 import { StorageService } from '../storage.service'
 import { CancelOptions, LocalNotifications } from '@capacitor/local-notifications';
+import { EChartsOption } from 'echarts';
 
+declare let options: any
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
+    
 })
 export class HomePage {
+  options: EChartsOption = {
+    color: ['#3398DB'],
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        axisTick: {
+          alignWithLabel: true
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    series: [
+      {
+        name: 'Test',
+        type: 'bar',
+        barWidth: '60%',
+        data: [10, 52, 200, 334, 390, 330, 220]
+      }
+    ]
+  };
     id: number | undefined;
     title: any;
     body: any;
@@ -22,7 +56,7 @@ export class HomePage {
     enviarNotif = true;
     reminderAgua = false;
     texto = ""
-
+    
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
         this.setup();
@@ -161,4 +195,9 @@ export class HomePage {
       this.m = parseInt(m.value)
     }
 
+
+    
+    async onChartInit(event:any){
+
+    }
 }
