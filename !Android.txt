@@ -2,15 +2,3 @@ ionic build
 rm -rf ./android/
 npx cap add android
 npx cap open android
-
-
-        let option:CancelOptions={
-          notifications:[
-            {id:0},
-            {id:1},
-            {id:3}
-
-          ]
-        }
-
-        LocalNotifications.cancel(option);
