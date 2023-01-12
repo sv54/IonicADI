@@ -32,18 +32,15 @@ ion-button[shape=circle] {
   height: 15rem;
 }
 
-ion-icon {
+ion-icon[name=water] {
   font-size: 128px;
 }
 
-ion-card{
-  margin-top: 20%;
-}
 
 ion-card-content{
   font-size: 22px;
 }
 
 .demo-chart {
-  height: 400px;
+  height: 30vh;
 }

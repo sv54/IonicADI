@@ -1,15 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-item>
+      <ion-label>
+        Home
+      </ion-label>
+      <ion-button color="danger" size="small" slot="end" (click)="minusOne()">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <!-- <ion-fab horizontal="end" vertical="top">
+      <ion-fab-button color="danger" size="small" (click)="minusOne()">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <ion-title>
       Home
-    </ion-title>
+    </ion-title> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" >
-
-
   <div id="container">
+    <ion-item>
+      <ion-label class="ion-text-wrap">Enviar notifiacaciones diaras</ion-label>
+      <ion-toggle color="success" [checked]=enviarNotif (click)="toggle(permiso)" #permiso></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label class="ion-text-wrap">Recuerdame beber agua cada 1 minuto</ion-label>
+      <ion-toggle color="success" [checked]=reminderAgua (click)="reminder(permiso2)" #permiso2></ion-toggle>
+    </ion-item>
     <ion-button class="BigButton" shape="circle" color="success" size="large" (click)="addOne()">
       <ion-icon slot="icon-only" name="water" ></ion-icon>
     </ion-button>
@@ -19,26 +38,15 @@
         <b>{{texto}}{{vecesHoy}} Vasos</b>
       </ion-card-content>
     </ion-card>
-    <ion-button (click)="showData()">Show Data</ion-button>
+    <!-- <ion-button (click)="showData()">Show Data</ion-button> -->
     <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
     <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->
     <div [options]="options" class="demo-chart" echarts></div>
-    </div>
+  </div>
 
-  <ion-item>
-    <ion-label class="ion-text-wrap">Enviar notifiacaciones diaras</ion-label>
-    <ion-toggle color="success" [checked]=enviarNotif (click)="toggle(permiso)" #permiso></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label class="ion-text-wrap">Recuerdame beber agua cada 1 minuto</ion-label>
-    <ion-toggle color="success" [checked]=reminderAgua (click)="reminder(permiso2)" #permiso2></ion-toggle>
-  </ion-item>
+
 
 </ion-content>
 <ion-footer>
-  <ion-fab horizontal="end" vertical="bottom">
-    <ion-fab-button color="danger" size="small" (click)="minusOne()">
-      <ion-icon name="remove-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+
 </ion-footer>

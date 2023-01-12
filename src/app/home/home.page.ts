@@ -10,10 +10,12 @@ declare let options: any
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
-    
+
 })
 export class HomePage {
   options: EChartsOption = {
+    responsive: true,
+    maintainAspectRatio: false,
     color: ['#3398DB'],
     grid: {
       left: '3%',
@@ -56,7 +58,7 @@ export class HomePage {
     enviarNotif = true;
     reminderAgua = false;
     texto = ""
-    
+
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
         this.setup();
@@ -160,7 +162,7 @@ export class HomePage {
       console.log("Enviando notificacion")
       const randomId = 100 //Math.floor(Math.random() * 10000) + 1;
       this.body = "It's time to drink some water! 8 glasses of water is the goal!"
-      await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body, this.h, Date.now() + 1000)
+      await this.localNotification.showLocalNotification(randomId, "Time for a glass of water", this.body)
     }
 
     async cancelLocalNotificationNow() {
@@ -196,7 +198,7 @@ export class HomePage {
     }
 
 
-    
+
     async onChartInit(event:any){
 
     }
