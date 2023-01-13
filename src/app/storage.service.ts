@@ -98,8 +98,6 @@ export class StorageService {
       values.unshift(value)
       date.setDate(date.getDate() - 1)
     }
-    console.log(week)
-    console.log(values)
     return{week, values}
 	}
 

@@ -39,12 +39,17 @@
         <b>{{texto}}{{vecesHoy}} Vasos</b>
       </ion-card-content>
     </ion-card>
-    <ion-button (click)="loadChart()">Reaload Chart</ion-button>
-    <ion-button (click)="getWeek()">Last 7 days</ion-button>
+    <!-- <ion-button (click)="getWeek()">Last 7 days</ion-button> -->
     <!-- <ion-button (click)="showData()">Show Data</ion-button> -->
     <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
     <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->
-    <div id="myChart" [options]="options" class="demo-chart" echarts></div>
+    <ion-card>
+      <ion-card-content>
+        <div id="myChart" [options]="options" class="demo-chart" echarts></div>
+        <ion-button (click)="loadChart()">Reaload Chart</ion-button>
+
+      </ion-card-content>
+    </ion-card>
   </div>
 
 
