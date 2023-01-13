@@ -39,10 +39,11 @@
         <b>{{texto}}{{vecesHoy}} Vasos</b>
       </ion-card-content>
     </ion-card>
+    <ion-button (click)="loadChart()">Reaload Chart</ion-button>
     <!-- <ion-button (click)="showData()">Show Data</ion-button> -->
     <!-- <ion-button (click)="removeData()">Delete today</ion-button> -->
     <!-- <ion-button (click)="sendLocalNotificationNow()">Send Notification every 1 Minute</ion-button> -->
-    <div [options]="options" class="demo-chart" echarts></div>
+    <div id="myChart" [options]="options" class="demo-chart" echarts></div>
   </div>
 
 

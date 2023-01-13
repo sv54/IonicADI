@@ -3,9 +3,8 @@ import { LocalNotifiactionService } from '../local-notifiaction.service';
 import { format, parseISO } from 'date-fns'
 import { StorageService } from '../storage.service'
 import { CancelOptions, LocalNotifications } from '@capacitor/local-notifications';
-import { EChartsOption } from 'echarts';
+import { EChartsOption} from 'echarts';
 
-declare let options: any
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
@@ -13,39 +12,7 @@ declare let options: any
 
 })
 export class HomePage {
-  options: EChartsOption = {
-    responsive: true,
-    maintainAspectRatio: false,
-    color: ['#3398DB'],
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        axisTick: {
-          alignWithLabel: true
-        }
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value'
-      }
-    ],
-    series: [
-      {
-        name: 'Test',
-        type: 'bar',
-        barWidth: '60%',
-        data: [10, 52, 200, 334, 390, 330, 220]
-      }
-    ]
-  };
+    options: any
     id: number | undefined;
     title: any;
     body: any;
@@ -58,6 +25,8 @@ export class HomePage {
     enviarNotif = true;
     reminderAgua = false;
     texto = ""
+    values = []
+    keys:string[] = []
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
@@ -66,19 +35,15 @@ export class HomePage {
           this.cancelLocalNotification()
           this.sendLocalNotification()
         }
-
-
-
-
     }
-
     async setup() {
+
+        await this.loadChart()
 
         this.formattedDateTime = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'HH:mm,  dd/MM/yy')
         this.day = format(parseISO(format(Date.now(), 'yyyy-MM-dd HH:mm')), 'dd/MM/yy')
 
         this.vecesHoy = parseInt(await this.StorageService.getData(this.day))
-        console.log(this.vecesHoy)
 
         this.asignarTexto()
 
@@ -88,47 +53,82 @@ export class HomePage {
         const toggle2 = await this.StorageService.getToggle2()
         this.reminderAgua = toggle2
 
-        await this.StorageService.addData("16/01/23", 7)
-        await this.StorageService.addData("15/01/23", 7)
-        await this.StorageService.addData("14/01/23", 8)
-        await this.StorageService.addData("13/01/23", 6)
-        await this.StorageService.addData("12/01/23", 7)
-        await this.StorageService.addData("11/01/23", 5)
-        await this.StorageService.addData("10/01/23", 3)
-        await this.StorageService.addData("9/01/23", 4)
-        await this.StorageService.addData("8/01/23", 3)
-        await this.StorageService.addData("7/01/23", 1)
-        await this.StorageService.addData("6/01/23", 2)
+        // await this.StorageService.addData("16/01/23", 7)
+        // await this.StorageService.addData("15/01/23", 7)
+        // await this.StorageService.addData("14/01/23", 8)
+        // await this.StorageService.addData("13/01/23", 6)
+        // await this.StorageService.addData("12/01/23", 7)
+        // await this.StorageService.addData("11/01/23", 5)
+        // await this.StorageService.addData("10/01/23", 3)
+        // await this.StorageService.addData("9/01/23", 4)
+        // await this.StorageService.addData("8/01/23", 3)
+        // await this.StorageService.addData("7/01/23", 1)
+        // await this.StorageService.addData("6/01/23", 2)
 
 
 
-        await this.loadChart()
+        //await this.loadChart()
 
     }
 
     async loadChart(){
       var {keys,values}= await this.StorageService.getChartData()
 
-      this.options.xAxis = {
-        type: 'category',
-        data: keys,
-        axisTick: {
-          alignWithLabel: true
-        }
-      }
-      this.options.series=
-      [
-        {
-          name: 'Test',
-          type: 'bar',
-          barWidth: '60%',
-          data: values
-        }
-      ]
+
+      this.options = {
+
+        color: ['#3398DB'],
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: keys,
+            axisTick: {
+              alignWithLabel: true
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: 'Test',
+            type: 'bar',
+            barWidth: '60%',
+            data: values
+          }
+        ]
+      };
+      // console.log(this.options.series)
+      // console.log(this.options.xAxis)
+
+      // this.options.xAxis = {
+      //   type: 'category',
+      //   data: keys,
+      //   axisTick: {
+      //     alignWithLabel: true
+      //   }
+      // }
+      // this.options.series=
+      // [
+      //   {
+      //     name: 'Test',
+      //     type: 'bar',
+      //     barWidth: '60%',
+      //     data: values
+      //   }
+      // ]
     }
 
     async addOne() {
-        console.log(this.enviarNotif)
         this.vecesHoy = this.vecesHoy + 1
         await this.StorageService.addData(this.day, this.vecesHoy)
         this.asignarTexto()

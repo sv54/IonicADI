@@ -9,6 +9,9 @@ const STORAGE_KEY = "lista"
 
 export class StorageService {
 
+  keys!: string[];
+  values!: Number[];
+
   constructor(private storage: Storage) {
     this.init()
    }
@@ -59,16 +62,18 @@ export class StorageService {
 
    async getChartData(){
     var keys: any[] = []
-    var values: string[]=[]
+    var values: Number[]=[]
     this.storage.forEach((value,key,index)=>{
       if(key!="toggle" && key!="toggle2"){
         keys.push(key)
         values.push(value)
       }
     })
+    this.keys = keys
+    this.values = values
     console.log(keys)
     console.log(values)
     return {keys,values}
   }
-   
+
 }
