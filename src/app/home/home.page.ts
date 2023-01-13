@@ -25,8 +25,6 @@ export class HomePage {
     enviarNotif = true;
     reminderAgua = false;
     texto = ""
-    values = []
-    keys:string[] = []
 
 
     constructor(private localNotification: LocalNotifiactionService, private StorageService: StorageService) {
@@ -71,8 +69,13 @@ export class HomePage {
 
     }
 
+    getWeek(){
+      this.StorageService.getLastWeek()
+    }
+
     async loadChart(){
-      var {keys,values}= await this.StorageService.getChartData()
+      // var {keys,values}= await this.StorageService.getChartData()
+      var {week,values}= await this.StorageService.getLastWeek()
 
 
       this.options = {
@@ -87,7 +90,7 @@ export class HomePage {
         xAxis: [
           {
             type: 'category',
-            data: keys,
+            data: week,
             axisTick: {
               alignWithLabel: true
             }
