@@ -67,6 +67,9 @@ export class HomePage {
           this.sendLocalNotification()
         }
 
+
+
+
     }
 
     async setup() {
@@ -84,6 +87,20 @@ export class HomePage {
 
         const toggle2 = await this.StorageService.getToggle2()
         this.reminderAgua = toggle2
+
+        await this.StorageService.addData("16/01/23", 7)
+        await this.StorageService.addData("15/01/23", 7)
+        await this.StorageService.addData("14/01/23", 8)
+        await this.StorageService.addData("13/01/23", 6)
+        await this.StorageService.addData("12/01/23", 7)
+        await this.StorageService.addData("11/01/23", 5)
+        await this.StorageService.addData("10/01/23", 3)
+        await this.StorageService.addData("9/01/23", 4)
+        await this.StorageService.addData("8/01/23", 3)
+        await this.StorageService.addData("7/01/23", 1)
+        await this.StorageService.addData("6/01/23", 2)
+
+
 
         await this.loadChart()
 
@@ -205,7 +222,7 @@ export class HomePage {
         this.texto = "Bueno comienzo! Llevas: "
       }
       else if(this.vecesHoy > 2 && this.vecesHoy < 6){
-        this.texto = "LLevas buen ritmo! Sigue asi! Ya son: "
+        this.texto = "Llevas buen ritmo! Sigue asi! Ya son: "
       }
       else if(this.vecesHoy > 5 && this.vecesHoy < 8){
         this.texto = "Ya casi esta por hoy! Ya van: "
